@@ -19,7 +19,7 @@ log.txt
 
 # Ionic
 /.ionic
-/www
+www/
 /platforms
 /plugins
 
@@ -30,7 +30,7 @@ log.txt
 /bazel-out
 
 # Node
-/node_modules
+node_modules/
 npm-debug.log
 yarn-error.log
 
@@ -54,11 +54,9 @@ yarn-error.log
 
 
 # Miscellaneous
-/.angular
-/.angular/cache
+.angular/
 .sass-cache/
-/.nx
-/.nx/cache
+.nx
 /connect.lock
 /coverage
 /libpeerconnection.log

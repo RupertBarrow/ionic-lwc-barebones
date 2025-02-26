@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import './my1-native-web-component';
+import './native-web-component';
 
 @Component({
   selector: 'app-my1-web-component',
