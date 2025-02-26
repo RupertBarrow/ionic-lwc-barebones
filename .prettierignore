@@ -1,0 +1,11 @@
+.vscode
+coverage/
+dist/
+site/
+src/resources
+__lwr_cache__
+node_modules/
+project/
+resources/
+ios/
+android/

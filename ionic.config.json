@@ -1,0 +1,7 @@
+{
+  "name": "colleurs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

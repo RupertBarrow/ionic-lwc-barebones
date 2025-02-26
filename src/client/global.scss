@@ -1,0 +1,517 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* TODO RBW @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+// Hide the flag
+.leaflet-control-attribution > a {
+  display: none;
+}
+.leaflet-control-attribution > span {
+  display: none;
+}
+
+/* Adjust Leaflet controls for mobile status bar */
+.leaflet-top {
+  top: env(safe-area-inset-top, 15px) !important;
+}
+
+/************************************************************
+ * POI MODAL
+ ************************************************************/
+
+.poi-modal-sheet {
+  --width: 100%;
+  --border-radius: 16px 16px 0 0;
+  --max-width: 100%;
+  transition: all 0.3s ease-in-out;
+
+  // When displayed on a large screen, force the width to 400px and display the sheet on the left
+  @media (orientation: landscape) or (min-width: 992px) {
+    width: calc(100vw - 400px);
+    max-width: calc(100vw - 400px);
+    --height: 100%;
+    position: fixed;
+    right: 0;
+    left: auto;
+
+    &::part(content) {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &::part(sheet) {
+      height: 100%;
+      transform: none !important;
+    }
+
+    &::part(backdrop) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &::part(content) {
+    border-radius: var(--border-radius);
+  }
+}
+
+// Styles for the POICollection edit modal on large screens
+.poicollection-modal-sheet {
+  --width: 100%;
+  --border-radius: 16px 16px 0 0;
+  --max-width: 100%;
+  transition: all 0.3s ease-in-out;
+  --border-radius: 16px 16px 0 0;
+
+  @media (orientation: landscape) or (min-width: 992px) {
+    width: calc(100vw - 400px);
+    max-width: calc(100vw - 400px);
+    --height: 100%;
+    position: fixed;
+    right: 0;
+    left: auto;
+
+    &::part(content) {
+      position: absolute;
+      right: 0; // Position content on the right
+      height: 100%;
+      border-left: 1px solid rgba(0, 0, 0, 0.1); // Border on the left side
+    }
+
+    &::part(sheet) {
+      height: 100%;
+      transform: none !important;
+    }
+
+    &::part(backdrop) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.map-modal-sheet {
+  --width: 100%;
+  --border-radius: 16px 16px 0 0;
+  --max-width: 100%;
+  transition: all 0.3s ease-in-out;
+
+  // When displayed on a large screen, force the width to 400px and display the sheet on the left
+  @media (orientation: landscape) or (min-width: 992px) {
+    width: 400px;
+    max-width: 400px;
+    //--width: 400px;
+    //--max-width: 400px;
+    --border-radius: 0;
+    --height: 100%;
+    position: fixed;
+    left: 0;
+
+    &::part(content) {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &::part(sheet) {
+      height: 100%;
+      transform: none !important;
+    }
+
+    &::part(backdrop) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.poi-modal-sheet-custom-class {
+  --width: 100%;
+  --border-radius: 16px 16px 0 0;
+  --max-width: 100%;
+  transition: all 0.3s ease-in-out;
+
+  // When displayed on a large screen, force the width to 400px and display the sheet on the left
+  @media (orientation: landscape) or (min-width: 992px) {
+    width: 400px;
+    max-width: 400px;
+    //--width: 400px;
+    //--max-width: 400px;
+    --border-radius: 0;
+    --height: 100%;
+    position: fixed;
+    left: 0;
+
+    &::part(content) {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &::part(sheet) {
+      height: 100%;
+      transform: none !important;
+    }
+
+    &::part(backdrop) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+/************************************************************
+ * POPOVER for the ADD POI MENU in the POI LIST MODAL
+ ************************************************************/
+
+.add-poi-popover {
+  --max-width: 90%;
+  --max-height: 400px; // Match the max-height from the component styles
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --backdrop-opacity: 0.4;
+
+  --min-width: 280px;
+}
+
+// .add-poi-popover[lang="en"] {
+//   --width: 280; // Match the width from the component styles
+// }
+// .add-poi-popover[lang="fr"] {
+//   --width: 310px; // Match the width from the component styles
+// }
+
+.add-poi-popover .popover-content {
+  border-radius: 8px;
+}
+
+/************************************************************
+ * MODAL HEADERS
+ ************************************************************/
+
+// Remove this padding
+ion-title {
+  padding-inline-start: 8px !important;
+  padding-inline-end: 0 !important;
+  text-align: left;
+}
+
+/************************************************************
+ * PULSATING ICON
+ ************************************************************/
+
+.custom-marker-icon-pulsating {
+  .marker-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+  }
+
+  .marker-image {
+    position: absolute;
+    width: 100% !important;
+    height: 100%;
+    z-index: 2;
+
+    filter: brightness(0.5); // Make the icon darker
+  }
+
+  .pulse-ring {
+    border: 3px solid #313131;
+    height: 30px;
+    width: 30px;
+
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+
+    animation: pulsate 1.5s ease-out;
+    -webkit-animation: pulse 1.5s ease-out;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+
+    /* Add these properties to center at bottom of the m  rker icon */
+    position: absolute;
+    bottom: -15px; /* Half the height to center vertically */
+    left: 0%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/************************************************************
+ * POPOVERS in SEARCH FILTER SELECTIONS
+ ************************************************************/
+
+.ios-select-popover {
+  --width: 250px;
+  --max-width: 90vw;
+
+  &::part(content) {
+    border-radius: 13px;
+  }
+
+  ion-list {
+    padding-top: 8px;
+  }
+
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --min-height: 36px;
+    font-size: 14px;
+
+    &:not(:last-child) {
+      --border-width: 0 0 0.5px 0;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .select-interface-option {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --min-height: 36px;
+  }
+}
+
+/************************************************************
+ * CHIPS in SEARCH FILTER SELECTIONS
+ ************************************************************/
+
+ion-chip.filter {
+  height: 30px;
+  padding: 0;
+  background: rgba(var(--ion-color-medium-rgb), 0.1);
+
+  &.selected {
+    background: darkblue;
+    color: white;
+  }
+
+  ion-icon {
+    margin-right: 4px;
+    margin-left: -4px;
+    cursor: pointer;
+    color: white;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  ion-select {
+    height: 30px;
+    min-width: auto;
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: 450;
+    --placeholder-font-size: 14px;
+
+    &::part(placeholder),
+    &::part(text),
+    &::part(label) {
+      color: inherit;
+      font-weight: inherit;
+    }
+
+    &::part(text) {
+      min-width: 0;
+    }
+
+    &::part(label) {
+      margin-right: 4px;
+    }
+  }
+
+  // see global.css for .ios-select-popover where ion-select-options are displayed
+}
+
+/************************************************************
+ * SEGMENTS in SEARCH FILTER SELECTIONS
+ ************************************************************/
+
+ion-segment.filter {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0; // Remove padding
+  height: 30px; // Match button height to remove gaps
+
+  ion-segment-button {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    min-width: auto;
+    --color-checked: white;
+    --background-checked: darkblue;
+    --indicator-color: transparent;
+    height: 100%;
+    flex: 0 0 auto;
+    font-size: 14px;
+    margin: 0;
+
+    &.segment-button-checked {
+      border-radius: 0;
+    }
+  }
+}
+
+.ios {
+  /************************************************************
+   * MODAL TOOLBAR which contains the SEARCHBAR
+   ************************************************************/
+
+  app-map-modal {
+    ion-header {
+      ion-toolbar {
+        padding-top: 9px !important;
+
+        padding-right: calc(var(--ion-safe-area-right) + 0px) !important;
+        padding-left: calc(var(--ion-safe-area-left) + 0px) !important;
+
+        .header-content {
+          padding-top: 0px !important;
+          padding-bottom: 0px !important;
+        }
+      }
+    }
+  }
+
+  /************************************************************
+   * FILTER SEARCHBARS on iOS
+   ************************************************************/
+
+  ion-searchbar {
+    //--border-radius: 20px;
+    --box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border: none !important;
+    min-height: 52px !important;
+
+    .searchbar-input {
+      padding-left: 35px !important;
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      text-align: left !important;
+    }
+
+    .searchbar-input-container {
+      input {
+        padding-left: 40px !important;
+        padding-right: 5px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        min-height: 42px !important;
+      }
+      .searchbar-search-icon {
+        position: absolute !important;
+        margin-left: 8px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+      }
+    }
+  }
+
+  /************************************************************
+   * IOS PAGE TITLE was on top of the "back" hamburger menu
+   ************************************************************/
+
+  ion-title {
+    padding-left: 46px !important;
+  }
+}
+
+/************************************************************
+ * HELP BOX in CARDS (in DEBUG, LOGIN pages)
+ ************************************************************/
+
+.help-box {
+  margin-bottom: 20px;
+  background: #e8f0fe;
+  border: 1px solid #bed0f7;
+  border-radius: 8px;
+
+  .help-content {
+    padding: 20px 16px;
+    text-align: center;
+
+    .help-icon {
+      font-size: 4em;
+      color: #4285f4;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 1.3em;
+      font-weight: 500;
+      color: #1a73e8;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1em;
+      color: #3c4043;
+      line-height: 1.4;
+    }
+  }
+}
