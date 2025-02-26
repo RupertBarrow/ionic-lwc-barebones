@@ -1,3 +1,3 @@
-# Colleurs
+# Ionic-LWC bare bones
 
-Application mobile de collage d'affiches
+Test integration of LWC components into an Ionic 6 Angular 18 application.
